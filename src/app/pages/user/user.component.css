@@ -1,0 +1,131 @@
+.container {
+    height: 510px;
+    left: 282px;
+    top: 80px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.header span {
+    width: 257px;
+    height: 30px;
+    left: 309px;
+    top: 92px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 20px;
+    align-items: center;
+    color: #333333;
+    margin: 12px 0 8px 27px;
+}
+
+.search-add {
+    height: 36px;
+    background: #FFFFFF;
+    align-items: center;
+    margin: 0 30px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+}
+
+.search-add input {
+    height: 34px;
+    /* left: 992px; */
+    width: 150px;
+    /* top: 142px; */
+    background: #FFFFFF;
+    border: 2px solid #CDD0D3;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.selectBox {
+    margin-left: 14px;
+    border: 1px solid #CDD0D3;
+    border-radius: 2px;
+    width: 150px;
+}
+
+.iconAction {
+    margin: 3px;
+    font-size: larger;
+}
+
+.iconAction:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+#btn-search {
+    height: 32px;
+    margin-left: 14px;
+    border-radius: 2px;
+}
+
+#btn-addUser {
+    height: 32px;
+    margin-left: auto;
+    background: #1890ff;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+
+.table {
+    counter-reset: tableCount;
+}
+
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+}
+
+.thead .tbody {
+    text-align: center;
+}
+
+.ant-table-tbody>tr>td {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s;
+    font-size: 13px;
+    /* text-align: center; */
+}
+
+.ant-table-thead>tr>th {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 900;
+    text-align: -webkit-center;
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s ease;
+}
+
+.pagination {
+    text-align: center;
+    bottom: 32px;
+    position: absolute;
+    display: contents;
+}
+
+
+/* @media screen and (max-width: 640px) {} */
+
+@media (max-width: 640px) {
+    .search-add {
+        height: fit-content;
+    }
+
+    .selectBox {
+        border: 1px solid #CDD0D3;
+        border-radius: 2px;
+        width: 150px;
+        margin: 10px 0 0 0;
+    }
+
+    #btn-search {
+        height: 32px;
+        margin: 10px 0 0 0;
+        border-radius: 2px;
+    }
+}
