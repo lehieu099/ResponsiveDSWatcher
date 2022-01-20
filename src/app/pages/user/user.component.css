@@ -81,24 +81,25 @@
     counter-increment: tableCount;
 }
 
-.thead .tbody {
-    text-align: center;
-}
-
 .ant-table-tbody>tr>td {
     border-bottom: 1px solid #f0f0f0;
     transition: background 0.3s;
     font-size: 13px;
-    /* text-align: center; */
+    text-align: center;
+    
 }
 
 .ant-table-thead>tr>th {
     color: rgba(0, 0, 0, 0.85);
     font-weight: 900;
-    text-align: -webkit-center;
+    text-align: center !important;
     background: #fafafa;
     border-bottom: 1px solid #f0f0f0;
     transition: background 0.3s ease;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
 .pagination {
@@ -108,10 +109,11 @@
     display: contents;
 }
 
+.tdEmail{
+    text-align: left !important;
+}
 
-/* @media screen and (max-width: 640px) {} */
-
-@media (max-width: 640px) {
+@media only screen and (max-width: 640px) {
     .search-add {
         height: fit-content;
     }
@@ -128,4 +130,61 @@
         margin: 10px 0 0 0;
         border-radius: 2px;
     }
+
+    .container {
+        height: max-content;
+        left: 282px;
+        top: 80px;
+        background: #FFFFFF;
+        border-radius: 10px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .inner-content {
+        background: #fff;
+    }
+
+    table, thead, tbody, th, td, tr{
+        display: block;
+    }
+
+    .thead tr{
+        position: absolute;
+        top: -9999px;
+        left:-9999px
+    }
+
+    tr{
+        margin: 0 0 1rem 0;
+    }
+
+    tr:nth-child(odd){
+        background: #ccc;
+    }
+
+    td{
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before{
+        position:absolute;
+        top:0;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1)::before{content: "STT";}
+    td:nth-of-type(2)::before{content: "Tài khoản"}
+    td:nth-of-type(3)::before{content: "Quyền"}
+    td:nth-of-type(4)::before{content: "Trạng thái"}
+    td:nth-of-type(5)::before{content: "Email"}
+    td:nth-of-type(6)::before{content: "Thao tác"}
 }

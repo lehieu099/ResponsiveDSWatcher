@@ -1,88 +1,82 @@
 <div class="container">
-    <div class="header">
-      <span>Danh sách tài khoản</span>
-      <hr>
-    </div>
-    <div class="filter-container">
-      <div nz-row nzGutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" nzAlign="top" class="search-add">
-        <div nz-col nzSpan="12" class="gutter-row">
-          <input class="form-control" type="text" name="search" id="userSearch" placeholder="Lọc theo username"
-            [(ngModel)]="username" (keydown)='keyDown($event)'>
-          <nz-select nzAllowClear nzPlaceHolder="Lọc theo quyền" class="selectBox" name="selectPermission"
-            [(ngModel)]="selectPermission">
-            <nz-option nzValue="user" nzLabel="Người dùng"></nz-option>
-            <nz-option nzValue="admin" nzLabel="Admin"></nz-option>
-            <nz-option nzValue="supervisor" nzLabel="Giám sát"></nz-option>
-          </nz-select>
-          <nz-select nzAllowClear nzPlaceHolder="Lọc theo trạng thái" class="selectBox" name="selectStatus"
-            [(ngModel)]="selectStatus">
-            <nz-option [nzValue]=true nzLabel="Hoạt động"></nz-option>
-            <nz-option [nzValue]=false nzLabel="Ngưng hoạt động"></nz-option>
-          </nz-select>
-          <button nz-button nzType="primary" id="btn-search" (click)="btnSearch()"><i nz-icon nzType="search"
-              nzTheme="outline"></i>
-            Tìm kiếm</button>
-        </div>
-        <div nz-col nzSpan="12" class="gutter-row">
-          <button nz-button id="btn-addUser" (click)="btnAdd()">
-            <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm tài khoản</button>
-        </div>
-      </div>
-    </div>
+  <div class="header">
+    <span>Danh sách tài khoản</span>
     <hr>
-    <div>
-      <nz-table #nzTable [nzData]="listuser" [nzLoading]="loading" nzShowPagination="false" [nzScroll]="{ y: '300px' }"
-        class="table">
-        <thead class="thead">
-          <tr>
-            <th nzWidth="60px">STT</th>
-            <!-- <th>ID</th> -->
-            <th>Tài khoản</th>
-            <th>Quyền</th>
-            <th>Trạng thái</th>
-            <th>Email</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-        <tbody class="tbody">
-          <tr *ngFor="let i of listuser">
-            <td class="counterCell"></td>
-            <!-- <td>{{i.id}}</td> -->
-            <td>{{i.username}}</td>
-            <td>{{i.permission}}</td>
-            <td #active *ngIf="i.status">
-              <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M0 8C0 5.87827 0.842855 3.84344 2.34315 2.34315C3.84344 0.842855 5.87827 0 8 0C10.1217 0 12.1566 0.842855 13.6569 2.34315C15.1571 3.84344 16 5.87827 16 8C16 10.1217 15.1571 12.1566 13.6569 13.6569C12.1566 15.1571 10.1217 16 8 16C5.87827 16 3.84344 15.1571 2.34315 13.6569C0.842855 12.1566 0 10.1217 0 8H0ZM7.54347 11.424L12.1493 5.66613L11.3173 5.00053L7.38987 9.90827L4.608 7.5904L3.92533 8.4096L7.54347 11.4251V11.424Z"
-                    fill="#219653" />
-                </svg>
-              </i>
-            </td>
-            <td *ngIf="!i.status">
-              <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M8 0C3.54286 0 0 3.54286 0 8C0 12.4571 3.54286 16 8 16C12.4571 16 16 12.4571 16 8C16 3.54286 12.4571 0 8 0ZM11.0857 12L8 8.91429L4.91429 12L4 11.0857L7.08571 8L4 4.91429L4.91429 4L8 7.08571L11.0857 4L12 4.91429L8.91429 8L12 11.0857L11.0857 12Z"
-                    fill="#EB5757" />
-                </svg>
-              </i>
-            </td>
-            <td>{{i.email}}</td>
-            <td class="action">
-              <i class="iconAction" nz-icon nzType="edit" nzTheme="twotone" (click)="Edit(i.id)"
-                nzIconfont="iconfont"></i>
-  
-              <i class="iconAction" nz-icon nzTheme="twotone" nzType="delete" nzTwotoneColor="red"
-                (click)="showConfirm(i.id, i.username)">
-              </i>
-              <nz-switch nzSize="small" [(ngModel)]="i.status" (ngModelChange)=checkStatusSwitch(i.id,i)></nz-switch>
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
-      <div class="pagination">
-        <nz-pagination [nzPageIndex]="page" [nzTotal]="count" [nzSize]="'small'" nzShowSizeChanger
-          [nzPageSizeOptions]="pageSizeOptions" (nzPageIndexChange)="pageIndexChange($event)"
-          (nzPageSizeChange)="pageSizeChange($event)"></nz-pagination>
+  </div>
+  <div class="filter-container">
+    <div nz-row nzGutter="{ xs: 8, sm: 16, md: 24, lg: 32 }" nzAlign="top" class="search-add">
+      <div nz-col nzSpan="12" class="gutter-row">
+        <input class="form-control" type="text" name="search" id="userSearch" placeholder="Lọc theo username"
+          [(ngModel)]="username" (keydown)='keyDown($event)'>
+        <nz-select nzAllowClear nzPlaceHolder="Lọc theo quyền" class="selectBox" name="selectPermission"
+          [(ngModel)]="selectPermission">
+          <nz-option nzValue="user" nzLabel="Người dùng"></nz-option>
+          <nz-option nzValue="admin" nzLabel="Admin"></nz-option>
+          <nz-option nzValue="supervisor" nzLabel="Giám sát"></nz-option>
+        </nz-select>
+        <nz-select nzAllowClear nzPlaceHolder="Lọc theo trạng thái" class="selectBox" name="selectStatus"
+          [(ngModel)]="selectStatus">
+          <nz-option [nzValue]=true nzLabel="Hoạt động"></nz-option>
+          <nz-option [nzValue]=false nzLabel="Ngưng hoạt động"></nz-option>
+        </nz-select>
+        <button nz-button nzType="primary" id="btn-search" (click)="btnSearch()"><i nz-icon nzType="search"
+            nzTheme="outline"></i>
+          Tìm kiếm</button>
+      </div>
+      <div nz-col nzSpan="12" class="gutter-row">
+        <button nz-button id="btn-addUser" (click)="btnAdd()">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm tài khoản</button>
       </div>
     </div>
   </div>
+  <hr>
+  <div>
+    <nz-table #nzTable [nzData]="listUser" [nzLoading]="loading" nzShowPagination="false" [nzScroll]="{ y: '300px' }"
+      class="table">
+      <thead class="thead">
+        <tr>
+          <th nzWidth="60px">STT</th>
+          <!-- <th>ID</th> -->
+          <th>Tài khoản</th>
+          <th>Quyền</th>
+          <th>Trạng thái</th>
+          <th>Email</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr *ngFor="let i of listUser">
+          <td class="counterCell"></td>
+          <!-- <td>{{i.id}}</td> -->
+          <td>{{i.username}}</td>
+          <td>{{i.permission}}</td>
+          <td #active *ngIf="i.status">
+            <i>
+              <img src="assets/user/active.svg" alt="">
+            </i>
+          </td>
+          <td *ngIf="!i.status">
+            <i>
+              <img src="assets/user/deactive.svg" alt="">
+            </i>
+          </td>
+          <td class="tdEmail">{{i.email}}</td>
+          <td class="action">
+            <i class="iconAction" nz-icon nzType="edit" nzTheme="twotone" (click)="Edit(i.id)"
+              nzIconfont="iconfont"></i>
+
+            <i class="iconAction" nz-icon nzTheme="twotone" nzType="delete" nzTwotoneColor="red"
+              (click)="showConfirm(i.id, i.username)">
+            </i>
+            <nz-switch nzSize="small" [(ngModel)]="i.status" (ngModelChange)=checkStatusSwitch(i.id,i)></nz-switch>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <div class="pagination">
+      <nz-pagination [nzPageIndex]="page" [nzTotal]="count" [nzSize]="'small'" nzShowSizeChanger
+        [nzPageSizeOptions]="pageSizeOptions" (nzPageIndexChange)="pageIndexChange($event)"
+        (nzPageSizeChange)="pageSizeChange($event)"></nz-pagination>
+    </div>
+  </div>
+</div>
