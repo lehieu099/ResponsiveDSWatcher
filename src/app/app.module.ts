@@ -7,6 +7,9 @@ import { NgZorroAntdModule } from './ng-zorro-antd/ng-zorro-antd.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './layout/layout.component';
+import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +21,11 @@ import { LayoutComponent } from './layout/layout.component';
     AppRoutingModule,
     NgZorroAntdModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule
   ],
-  providers: [],
+  providers: [{provide: NZ_I18N, useValue:vi_VN}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
