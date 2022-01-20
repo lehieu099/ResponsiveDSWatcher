@@ -96,3 +96,8 @@ nz-menu-item i {
 #nav img{
   background-color: #FFFFFF;
 } */
+@media (max-width: 640px){
+  .inner-content{
+    padding: 0px;
+  }
+}
